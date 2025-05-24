@@ -1,0 +1,10 @@
+const r = require("express").Router();
+const c = require("../controllers/task.controller");
+const auth = require("../middleware/authenticate");
+const permit = require("../middleware/authorize");
+r.use(auth);
+r.post("/projects/:projectId/tasks", c.create);
+r.patch("/tasks/:id", c.update);
+r.post("/tasks/:id/comments", c.comment);
+r.post("/tasks/:id/tags", c.tag);
+module.exports = r;
